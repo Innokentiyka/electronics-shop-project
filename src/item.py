@@ -37,4 +37,4 @@ class Item:
 
     def __repr__(self) -> str:
 
-        return f"{Item.all.append(self.name)}"
+        return f"{self.name}"
