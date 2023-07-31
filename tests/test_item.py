@@ -9,9 +9,8 @@ class TestCalculateTotalPrice:
         result = obj.calculate_total_price()
         assert result == 50
 
-
-Item.instantiate_from_csv()
-assert len(Item.all) == 5
-assert Item.string_to_number('5') == 5
-assert Item.string_to_number('5.0') == 5.0
-assert Item.string_to_number('5.5') == 5.5
+    Item.instantiate_from_csv()
+    assert len(Item.all) == 5
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5
