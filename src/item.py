@@ -20,8 +20,11 @@ class Item:
         self.__name = name
         self.price = price
         self.quantity = quantity
-        self.__class__.all.append(self)
 
+
+
+    def __repr__(self):
+        return f"{__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -39,30 +42,29 @@ class Item:
         return self.price
 
     @classmethod
-    def instantiate_from_csv(cls):
-        items = []
-        with open('/src/items.csv', 'r') as file:
+    def instantiate_from_csv(cls, path = '../src/items.csv'):
+        cls.all.clear()
+        with open(path, 'r') as file:
             reader = csv.reader(file)
             for row in reader:
                 name, price, quantity = row
-                item = cls(name, price, quantity)
-                items.append(item)
-        return items
+                items = name, price, quantity
+                cls.all.append(str(items[0]))
+        return cls.all
 
     @staticmethod
-    def string_to_number(string):
-        number = float(string)
-        return number
+    def string_to_number(file):
+        return int(float(file))
 
-    @propetry
+    @property
     def name(self):
-        return f"{self.name}"
+        return f'{self.__name}'
 
     @name.setter
-    def fullname(self, name):
-        """Метод срабатывает при операции присваивания."""
-        if len(name) > 10:
-            return "Больше 10"
-        self.name = name
+    def name(self, name):
+        if len(name) <= 10:
+            self.__name = name
+        else:
+            raise ValueError("Exception: Длина наименования товара превышает 10 символов")
 
 
