@@ -42,15 +42,13 @@ class Item:
         return self.price
 
     @classmethod
-    def instantiate_from_csv(cls, path = '../src/items.csv'):
+    def instantiate_from_csv(cls, path='../src/items.csv'):
         cls.all.clear()
-        with open(path, 'r') as file:
+        with open(path, 'r', encoding='cp1251') as file:
             reader = csv.reader(file)
             for row in reader:
                 name, price, quantity = row
-                items = name, price, quantity
-                cls.all.append(str(items[0]))
-        return cls.all
+                cls.all.append(cls(name, price, quantity))
 
     @staticmethod
     def string_to_number(file):
