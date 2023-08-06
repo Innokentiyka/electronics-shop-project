@@ -14,3 +14,9 @@ class TestCalculateTotalPrice:
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
+
+    if __name__ == '__main__':
+        item1 = Item("Ноутбук", 10, 200)
+        assert repr(item1) == "Item('Ноутбук', 10, 200)"
+        assert str(item1) == 'Ноутбук'
+
