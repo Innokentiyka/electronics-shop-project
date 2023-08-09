@@ -21,6 +21,8 @@ class Item:
         self.price = price
         self.quantity = quantity
 
+    def __add__(self, other):
+        return self.quantity + other.quantity
     def __repr__(self):
         return f"{__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
