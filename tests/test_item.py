@@ -1,6 +1,6 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
-from src.item import Item
+from src.item import Item,InstantiateCSVError
 from src.phone import Phone
 
 class TestCalculateTotalPrice:
@@ -29,3 +29,8 @@ assert repr(phone1) == "Phone('iPhone 14', 120000, 5, 4)"
 item1 = Item("Смартфон", 10000, 25)
 assert item1 + phone1 == 35
 assert phone1 + phone1 == 20
+
+try:
+    Item.instantiate_from_csv("item.csv")
+except InstantiateCSVError as ex:
+    print(str(ex))
